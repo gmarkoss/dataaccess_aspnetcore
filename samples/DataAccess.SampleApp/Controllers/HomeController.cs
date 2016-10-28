@@ -40,13 +40,13 @@ namespace DataAccess.SampleApp.Controllers
                 var building = await repository.GetAsync(1, includes.Expression);
                 //**************************************
 
-                //Func<IQueryable<Building>, IQueryable<Building>> func = query =>
-                //{
-                //    return query.Include(b => b.Appartments)
-                //                    .ThenInclude(a => a.Rooms);
-                //};
+                Func<IQueryable<Building>, IQueryable<Building>> func = query =>
+                {
+                    return query.Include(b => b.Appartments)
+                                    .ThenInclude(a => a.Rooms);
+                };
 
-                //buildings = await repository.GetAllAsync(null, func);
+                buildings = await repository.GetAllAsync(null, func);
 
                 //**************************************
 
